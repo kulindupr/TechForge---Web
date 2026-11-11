@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Quote, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react'
 import nethminiPhoto from '../assets/testimonial-nethmini.webp'
 import milanPhoto from '../assets/testimonial-milan.webp'
 
@@ -17,6 +17,13 @@ const testimonials = [
     name: 'Milan Sathsara',
     role: 'Owner, Milan POS (Food City)',
     photo: milanPhoto,
+  },
+  {
+    quote:
+      "Our editorial team isn't technical, so we needed something our journalists could pick up without training. The new system lets us publish and schedule stories ourselves now, instead of waiting on a developer every time we wanted something posted.",
+    name: 'NWN.lk',
+    role: 'Editorial Team',
+    photo: null,
   },
 ]
 
@@ -46,15 +53,21 @@ export default function Testimonials() {
           <Quote className="h-7 w-7 text-cyan-400/60" />
           <p className="mt-4 text-lg leading-relaxed text-slate-200">{t.quote}</p>
           <div className="mt-6 flex items-center gap-3">
-            <img
-              src={t.photo}
-              alt={t.name}
-              loading="lazy"
-              decoding="async"
-              width="44"
-              height="44"
-              className="h-11 w-11 rounded-full object-cover"
-            />
+            {t.photo ? (
+              <img
+                src={t.photo}
+                alt={t.name}
+                loading="lazy"
+                decoding="async"
+                width="44"
+                height="44"
+                className="h-11 w-11 rounded-full object-cover"
+              />
+            ) : (
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-[#06101f]">
+                <Newspaper className="h-5 w-5" />
+              </span>
+            )}
             <div>
               <p className="text-sm font-semibold text-white">{t.name}</p>
               <p className="text-xs text-slate-400">{t.role}</p>
