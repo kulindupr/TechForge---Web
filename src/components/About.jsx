@@ -1,5 +1,5 @@
 import { Target, Eye, Sparkles, ArrowRight } from 'lucide-react'
-import founderPhoto from '../assets/founder.png'
+import founderPhoto from '../assets/founder.webp'
 
 const LinkedinIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -63,6 +63,10 @@ export default function About() {
         <img
           src={founderPhoto}
           alt="Kulindu Pabasara"
+          loading="lazy"
+          decoding="async"
+          width="96"
+          height="96"
           className="h-24 w-24 flex-shrink-0 rounded-full border-2 border-cyan-400/40 object-cover"
         />
         <div className="flex-1 text-center md:text-left">

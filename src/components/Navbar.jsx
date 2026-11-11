@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 
 const links = ['Home', 'Services', 'Projects', 'About', 'Blog', 'Contact']
 

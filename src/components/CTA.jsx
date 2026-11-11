@@ -1,5 +1,5 @@
 import { Send, ArrowRight, Phone } from 'lucide-react'
-import cityscape from '../assets/cta-cityscape.png'
+import cityscape from '../assets/cta-cityscape.webp'
 
 const WhatsappIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -14,6 +14,8 @@ export default function CTA() {
       <img
         src={cityscape}
         alt=""
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-purple-600/40 to-fuchsia-600/40" />

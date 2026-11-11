@@ -21,6 +21,8 @@ export default function Hero() {
       <video
         className="absolute inset-0 h-full w-full object-cover brightness-125 contrast-105"
         src="/video/hero.mp4"
+        poster="/video/hero-poster.jpg"
+        preload="auto"
         autoPlay
         muted
         loop

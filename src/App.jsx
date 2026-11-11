@@ -1,10 +1,12 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ParticleNetwork from './components/ParticleNetwork'
 import Home from './pages/Home'
-import Solutions from './pages/Solutions'
-import ResearchSupport from './pages/ResearchSupport'
+
+const Solutions = lazy(() => import('./pages/Solutions'))
+const ResearchSupport = lazy(() => import('./pages/ResearchSupport'))
 
 function App() {
   return (
@@ -17,11 +19,13 @@ function App() {
         />
       </div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/solutions" element={<Solutions />} />
-        <Route path="/research-support" element={<ResearchSupport />} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/solutions" element={<Solutions />} />
+          <Route path="/research-support" element={<ResearchSupport />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </div>
   )

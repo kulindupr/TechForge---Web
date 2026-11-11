@@ -1,5 +1,5 @@
 import { Mail, Phone } from 'lucide-react'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.webp'
 
 const WhatsappIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
