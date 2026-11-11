@@ -17,7 +17,7 @@ const SOLUTIONS = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative h-[calc(100vh-72px)] overflow-hidden">
+    <section id="home" className="relative h-[calc(100vh-69px)] overflow-hidden">
       <video
         className="absolute inset-0 h-full w-full object-cover brightness-125 contrast-105"
         src="/video/hero.mp4"
@@ -31,7 +31,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#060c1a] via-[#060c1a]/50 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#060c1a]/80 via-transparent to-transparent" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 pb-16 pt-20">
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 pb-16 pt-8">
         <div className="max-w-xl">
           <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-cyan-300">
             Innovative Technology. Real-World Impact.
