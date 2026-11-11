@@ -5,7 +5,32 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" as="video" href="/video/hero.mp4" type="video/mp4" />
+
+    <!-- Fallback title for crawlers that don't run JS; every route sets its own title/description/canonical via react-helmet-async (see src/components/SEO.jsx). -->
     <title>Tech Forge — Your Ideas. Our Support. Better Results!</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tech Forge" />
+    <meta property="og:image" content="https://www.techforgelk.com/video/hero-poster.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.techforgelk.com/video/hero-poster.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tech Forge",
+        "url": "https://www.techforgelk.com/",
+        "logo": "https://www.techforgelk.com/favicon.ico",
+        "email": "techforgesrilanka@gmail.com",
+        "telephone": "+94782500075",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "LK"
+        },
+        "sameAs": []
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

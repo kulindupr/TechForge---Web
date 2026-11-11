@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import {
   ArrowRight,
   ArrowLeft,
@@ -74,6 +75,11 @@ const process = [
 export default function ResearchSupport() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-16">
+      <SEO
+        title="Academic & Research Support — Tech Forge"
+        description="Research guidance, IBM SPSS & statistical support, data analysis, and academic documentation support from Tech Forge."
+        path="/research-support"
+      />
       <Link
         to="/"
         className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-cyan-300"

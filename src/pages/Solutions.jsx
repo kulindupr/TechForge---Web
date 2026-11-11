@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 import {
   ArrowRight,
   ArrowLeft,
@@ -94,6 +95,11 @@ const process = [
 export default function Solutions() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-16">
+      <SEO
+        title="Software & Digital Solutions — Tech Forge"
+        description="Websites, e-commerce, mobile apps, ERP, POS and custom business software built by Tech Forge for businesses in Sri Lanka."
+        path="/solutions"
+      />
       <Link
         to="/"
         className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-cyan-300"

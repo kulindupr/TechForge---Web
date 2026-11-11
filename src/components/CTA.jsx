@@ -26,7 +26,7 @@ export default function CTA() {
             <Send className="h-5 w-5 text-white" />
           </span>
           <div>
-            <h3 className="text-xl font-bold text-white">Let's Build Something Great Together</h3>
+            <h2 className="text-xl font-bold text-white">Let's Build Something Great Together</h2>
             <p className="mt-1 text-sm text-slate-200">
               Get in touch with us for your next project or consultation.
             </p>
