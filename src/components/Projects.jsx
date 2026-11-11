@@ -44,9 +44,9 @@ const projects = [
   {
     icon: Newspaper,
     gradient: 'from-blue-500 to-indigo-600',
-    title: 'SL24 CMS',
+    title: 'NWN.lk',
     subtitle: 'News Content Management System',
-    desc: 'Full news publishing CMS with rich-text authoring, scheduled publishing and role-based access.',
+    desc: "Full news publishing CMS built for NWN (nwn.lk), a Sri Lankan news platform, with rich-text authoring, scheduled publishing and role-based access.",
     tag: 'Full Stack',
     tagColor: 'bg-blue-400/15 text-blue-300 border-blue-400/20',
     stack: ['React', 'ASP.NET Core', 'Tailwind CSS'],

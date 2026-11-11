@@ -1,13 +1,22 @@
 import { useState } from 'react'
 import { Quote, ChevronLeft, ChevronRight } from 'lucide-react'
+import nethminiPhoto from '../assets/testimonial-nethmini.webp'
+import milanPhoto from '../assets/testimonial-milan.webp'
 
-// Placeholder slots — replace with real client quotes once available.
 const testimonials = [
   {
     quote:
-      'Add a real quote from a client here once a project is delivered and the client agrees to be featured.',
-    name: 'Client Name',
-    role: 'Role, Company',
+      "Before this, I was tracking orders in a notebook and replying to customers one by one on WhatsApp. Now everything just works from one place, and I actually have time to focus on growing the shop instead of chasing orders.",
+    name: 'Nethmini Jayathilaka',
+    role: 'Owner, Leonara',
+    photo: nethminiPhoto,
+  },
+  {
+    quote:
+      "I was worried a new system would slow my staff down, but it was the opposite — billing is faster now and I can finally see what's selling without counting stock by hand every night. Tech Forge made it simple for people like us who aren't 'tech people'.",
+    name: 'Milan Sathsara',
+    role: 'Owner, Milan POS (Food City)',
+    photo: milanPhoto,
   },
 ]
 
@@ -37,9 +46,15 @@ export default function Testimonials() {
           <Quote className="h-7 w-7 text-cyan-400/60" />
           <p className="mt-4 text-lg leading-relaxed text-slate-200">{t.quote}</p>
           <div className="mt-6 flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-sm font-bold text-[#06101f]">
-              {t.name.charAt(0)}
-            </span>
+            <img
+              src={t.photo}
+              alt={t.name}
+              loading="lazy"
+              decoding="async"
+              width="44"
+              height="44"
+              className="h-11 w-11 rounded-full object-cover"
+            />
             <div>
               <p className="text-sm font-semibold text-white">{t.name}</p>
               <p className="text-xs text-slate-400">{t.role}</p>
