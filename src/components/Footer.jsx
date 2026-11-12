@@ -23,7 +23,7 @@ const YoutubeIcon = (props) => (
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#04080f]">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-6 py-10 md:flex-row md:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-6 py-6 md:flex-row md:justify-between">
         <img src={logo} alt="Tech Forge" className="h-24 w-auto" />
 
         <p className="text-sm text-slate-400">
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/5 px-6 py-5">
+      <div className="border-t border-white/5 px-6 py-3">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs text-slate-500 md:flex-row">
           <p>© {new Date().getFullYear()} Tech Forge. All rights reserved.</p>
           <div className="flex gap-4">
