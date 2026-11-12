@@ -1,5 +1,5 @@
 import { Mail, Phone } from 'lucide-react'
-import logo from '../assets/logo.webp'
+import logo from '../assets/logo-footer.webp'
 
 const WhatsappIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -24,7 +24,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#04080f]">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-6 py-10 md:flex-row md:justify-between">
-        <img src={logo} alt="Tech Forge" className="h-8 w-auto" />
+        <img src={logo} alt="Tech Forge" className="h-10 w-auto" />
 
         <p className="text-sm text-slate-400">
           Technology • Research • Innovation • Digital Solutions
