@@ -37,11 +37,11 @@ export default function Testimonials() {
   return (
     <section className="mx-auto max-w-4xl px-6 pb-20">
       <Reveal>
-        <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">What clients say</h2>
+        <h2 className="font-brand text-3xl text-[#f1efe9] md:text-4xl">What clients say</h2>
       </Reveal>
 
-      <div className="mt-10 border-l-2 border-[#b9922f] pl-8">
-        <p className="font-brand text-2xl leading-snug text-[#efece4] md:text-[1.7rem]">
+      <div className="mt-10 border-l-2 border-[#c5a46d] pl-8">
+        <p className="font-brand text-2xl leading-snug text-[#f1efe9] md:text-[1.7rem]">
           “{t.quote}”
         </p>
         <div className="mt-6 flex items-center gap-3">
@@ -56,23 +56,23 @@ export default function Testimonials() {
               className="h-10 w-10 rounded-full object-cover grayscale"
             />
           ) : (
-            <span className="h-10 w-10 rounded-full bg-[#131419]" />
+            <span className="h-10 w-10 rounded-full bg-[#15181d]" />
           )}
           <div>
-            <p className="text-sm font-semibold text-[#efece4]">{t.name}</p>
-            <p className="text-xs text-[#6b6e76]">{t.role}</p>
+            <p className="text-sm font-semibold text-[#f1efe9]">{t.name}</p>
+            <p className="text-xs text-[#777b83]">{t.role}</p>
           </div>
         </div>
       </div>
 
       <div className="mt-8 flex items-center gap-4">
-        <button onClick={prev} aria-label="Previous testimonial" className="text-[#9497a1] transition hover:text-[#efece4]">
+        <button onClick={prev} aria-label="Previous testimonial" className="text-[#a3a5aa] transition hover:text-[#f1efe9]">
           <ChevronLeft className="h-5 w-5" />
         </button>
-        <button onClick={next} aria-label="Next testimonial" className="text-[#9497a1] transition hover:text-[#efece4]">
+        <button onClick={next} aria-label="Next testimonial" className="text-[#a3a5aa] transition hover:text-[#f1efe9]">
           <ChevronRight className="h-5 w-5" />
         </button>
-        <span className="text-xs text-[#6b6e76]">
+        <span className="text-xs text-[#777b83]">
           {i + 1} / {testimonials.length}
         </span>
       </div>

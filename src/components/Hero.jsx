@@ -42,23 +42,23 @@ function PrecisionMark() {
         style={{ transformStyle: 'preserve-3d' }}
       >
         <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="#24252b" />
+          <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="rgba(255,255,255,0.1)" />
           {Array.from({ length: 7 }).map((_, i) => (
-            <line key={`v${i}`} x1={(i + 1) * 50} y1="0" x2={(i + 1) * 50} y2="400" stroke="#17181c" strokeWidth="1" />
+            <line key={`v${i}`} x1={(i + 1) * 50} y1="0" x2={(i + 1) * 50} y2="400" stroke="#15181d" strokeWidth="1" />
           ))}
           {Array.from({ length: 7 }).map((_, i) => (
-            <line key={`h${i}`} x1="0" y1={(i + 1) * 50} x2="400" y2={(i + 1) * 50} stroke="#17181c" strokeWidth="1" />
+            <line key={`h${i}`} x1="0" y1={(i + 1) * 50} x2="400" y2={(i + 1) * 50} stroke="#15181d" strokeWidth="1" />
           ))}
-          <circle cx="200" cy="200" r="90" fill="none" stroke="#b9922f" strokeWidth="1" />
-          <circle cx="200" cy="200" r="130" fill="none" stroke="#b9922f" strokeWidth="0.5" opacity="0.35" />
-          <circle cx="200" cy="200" r="2.5" fill="#b9922f" />
-          <line x1="200" y1="60" x2="200" y2="105" stroke="#b9922f" strokeWidth="1" />
-          <line x1="200" y1="295" x2="200" y2="340" stroke="#b9922f" strokeWidth="1" />
-          <line x1="60" y1="200" x2="105" y2="200" stroke="#b9922f" strokeWidth="1" />
-          <line x1="295" y1="200" x2="340" y2="200" stroke="#b9922f" strokeWidth="1" />
-          <path d="M160 215 L185 240 L245 170" fill="none" stroke="#efece4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <text x="24" y="30" fill="#9497a1" fontSize="11" fontFamily="monospace" letterSpacing="1">N 06.9271</text>
-          <text x="24" y="382" fill="#9497a1" fontSize="11" fontFamily="monospace" letterSpacing="1">E 79.8612</text>
+          <circle cx="200" cy="200" r="90" fill="none" stroke="#c5a46d" strokeWidth="1" />
+          <circle cx="200" cy="200" r="130" fill="none" stroke="#c5a46d" strokeWidth="0.5" opacity="0.35" />
+          <circle cx="200" cy="200" r="2.5" fill="#c5a46d" />
+          <line x1="200" y1="60" x2="200" y2="105" stroke="#c5a46d" strokeWidth="1" />
+          <line x1="200" y1="295" x2="200" y2="340" stroke="#c5a46d" strokeWidth="1" />
+          <line x1="60" y1="200" x2="105" y2="200" stroke="#c5a46d" strokeWidth="1" />
+          <line x1="295" y1="200" x2="340" y2="200" stroke="#c5a46d" strokeWidth="1" />
+          <path d="M160 215 L185 240 L245 170" fill="none" stroke="#f1efe9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="24" y="30" fill="#a3a5aa" fontSize="11" fontFamily="monospace" letterSpacing="1">N 06.9271</text>
+          <text x="24" y="382" fill="#a3a5aa" fontSize="11" fontFamily="monospace" letterSpacing="1">E 79.8612</text>
         </svg>
       </div>
     </div>
@@ -67,7 +67,7 @@ function PrecisionMark() {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden border-b border-[#17181c] pb-16 pt-36 md:pt-44">
+    <section id="home" className="relative overflow-hidden border-b border-[#15181d] pb-16 pt-36 md:pt-44">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[560px]"
         style={{
@@ -78,11 +78,11 @@ export default function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <div className="max-w-xl">
-          <h1 className="font-brand text-6xl leading-[1.02] text-[#efece4] md:text-7xl">
+          <h1 className="font-brand text-6xl leading-[1.02] text-[#f1efe9] md:text-7xl">
             Precision in progress
           </h1>
 
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-[#9497a1]">
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-[#a3a5aa]">
             A Sri Lankan technology, research and innovation practice — built on careful
             thinking, precise execution and work that holds up.
           </p>
@@ -93,13 +93,13 @@ export default function Hero() {
             </a>
             <a
               href="#about"
-              className="border-b border-[#3a3b42] pb-0.5 text-sm font-medium text-[#efece4] transition hover:border-[#b9922f] hover:text-[#b9922f]"
+              className="border-b border-white/20 pb-0.5 text-sm font-medium text-[#f1efe9] transition hover:border-[#c5a46d] hover:text-[#c5a46d]"
             >
               About Aelin
             </a>
           </div>
 
-          <div className="mt-16 flex flex-wrap gap-x-8 gap-y-2 border-t border-[#17181c] pt-6 text-sm text-[#6b6e76]">
+          <div className="mt-16 flex flex-wrap gap-x-8 gap-y-2 border-t border-[#15181d] pt-6 text-sm text-[#777b83]">
             {CAPABILITIES.map((c) => (
               <span key={c}>{c}</span>
             ))}

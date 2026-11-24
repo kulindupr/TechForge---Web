@@ -5,8 +5,6 @@ import Capabilities from '../components/Capabilities'
 import WhyChoose from '../components/WhyChoose'
 import About from '../components/About'
 import Projects from '../components/Projects'
-// Blog: no real posts yet, section disabled for now
-// import Blog from '../components/Blog'
 import Testimonials from '../components/Testimonials'
 import CTA from '../components/CTA'
 
@@ -24,7 +22,6 @@ export default function Home() {
       <WhyChoose />
       <About />
       <Projects />
-      {/* <Blog /> */}
       <Testimonials />
       <CTA />
     </>

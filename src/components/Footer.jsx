@@ -1,5 +1,19 @@
+import { Link } from 'react-router-dom'
 import { Mail, Phone } from 'lucide-react'
 import logo from '../assets/logo-footer.webp'
+
+const DIVISION_LINKS = [
+  { label: 'Aelin Research', to: '/research' },
+  { label: 'Aelin Digital', to: '/digital' },
+  { label: 'Aelin Innovation', to: '/innovation' },
+]
+
+const PAGE_LINKS = [
+  { label: 'Projects', to: '/projects' },
+  { label: 'About', to: '/about' },
+  { label: 'Insights', to: '/insights' },
+  { label: 'Contact', to: '/contact' },
+]
 
 const WhatsappIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -22,16 +36,48 @@ const YoutubeIcon = (props) => (
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#24252b] bg-[#0b0c10]">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-6 py-6 md:flex-row md:justify-between">
-        <div className="flex flex-col items-center gap-1 md:items-start">
+    <footer className="border-t border-white/10 bg-[#090a0c]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:grid-cols-3">
+        <div>
           <img src={logo} alt="Aelin Technologies" className="h-10 w-auto" />
-          <p className="pl-2 text-xs uppercase tracking-[0.2em] text-[#9497a1]">
+          <p className="pl-2 text-xs uppercase tracking-[0.2em] text-[#a3a5aa]">
             Precision in Progress
+          </p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#777b83]">
+            A Sri Lankan technology, research and innovation practice across three
+            divisions.
           </p>
         </div>
 
-        <p className="text-sm text-[#9497a1]">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#777b83]">Divisions</p>
+          <ul className="mt-4 flex flex-col gap-2.5 text-sm text-[#a3a5aa]">
+            {DIVISION_LINKS.map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="transition hover:text-[#c5a46d]">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#777b83]">Company</p>
+          <ul className="mt-4 flex flex-col gap-2.5 text-sm text-[#a3a5aa]">
+            {PAGE_LINKS.map((l) => (
+              <li key={l.to}>
+                <Link to={l.to} className="transition hover:text-[#c5a46d]">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 border-t border-white/10 px-6 py-6 md:flex-row md:justify-between">
+        <p className="text-sm text-[#a3a5aa]">
           Technology • Research • Innovation • Digital Solutions
         </p>
 
@@ -50,7 +96,7 @@ export default function Footer() {
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#131419] text-[#c7c9cd] transition hover:text-[#b9922f]"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#15181d] text-[#a3a5aa] transition hover:text-[#c5a46d]"
             >
               <Icon className="h-4 w-4" />
             </a>
@@ -58,16 +104,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-[#24252b] px-6 py-3">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs text-[#9497a1] md:flex-row">
+      <div className="border-t border-white/10 px-6 py-3">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs text-[#a3a5aa] md:flex-row">
           <p>© {new Date().getFullYear()} Aelin Technologies. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#privacy" className="hover:text-[#c7c9cd]">
+            <Link to="/privacy" className="hover:text-[#c5a46d]">
               Privacy Policy
-            </a>
-            <a href="#terms" className="hover:text-[#c7c9cd]">
+            </Link>
+            <Link to="/terms" className="hover:text-[#c5a46d]">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -38,15 +38,15 @@ export default function WhyChoose() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-20">
       <Reveal className="max-w-2xl">
-        <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">Why work with Aelin</h2>
-        <p className="mt-2 text-base text-[#9497a1]">Your trusted partner in technology and innovation.</p>
+        <h2 className="font-brand text-3xl text-[#f1efe9] md:text-4xl">Why work with Aelin</h2>
+        <p className="mt-2 text-base text-[#a3a5aa]">Your trusted partner in technology and innovation.</p>
       </Reveal>
 
-      <div className="mt-10 grid grid-cols-2 gap-px border-y border-[#24252b] bg-[#24252b] sm:grid-cols-4">
+      <div className="mt-10 grid grid-cols-2 gap-px border-y border-white/10 bg-white/10 sm:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className="bg-[#0b0c10] px-6 py-6">
-            <p className="font-brand text-3xl text-[#efece4]">{s.value}</p>
-            <p className="mt-1 text-sm text-[#9497a1]">{s.label}</p>
+          <div key={s.label} className="bg-[#090a0c] px-6 py-6">
+            <p className="font-brand text-3xl text-[#f1efe9]">{s.value}</p>
+            <p className="mt-1 text-sm text-[#a3a5aa]">{s.label}</p>
           </div>
         ))}
       </div>
@@ -54,10 +54,10 @@ export default function WhyChoose() {
       <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2">
         {items.map(({ label, desc }) => (
           <div key={label} className="flex gap-4">
-            <span className="mt-2 h-px w-5 flex-shrink-0 bg-[#b9922f]" />
+            <span className="mt-2 h-px w-5 flex-shrink-0 bg-[#c5a46d]" />
             <div>
-              <p className="text-base font-medium text-[#efece4]">{label}</p>
-              <p className="mt-1 text-sm leading-relaxed text-[#9497a1]">{desc}</p>
+              <p className="text-base font-medium text-[#f1efe9]">{label}</p>
+              <p className="mt-1 text-sm leading-relaxed text-[#a3a5aa]">{desc}</p>
             </div>
           </div>
         ))}

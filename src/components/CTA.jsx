@@ -10,10 +10,10 @@ const WhatsappIcon = (props) => (
 export default function CTA() {
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 pb-20">
-      <div className="flex flex-col gap-8 border-t border-[#24252b] pt-12 md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-8 border-t border-white/10 pt-12 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">Let's build something great together</h2>
-          <p className="mt-2 text-base text-[#9497a1]">
+          <h2 className="font-brand text-3xl text-[#f1efe9] md:text-4xl">Let's build something great together</h2>
+          <p className="mt-2 text-base text-[#a3a5aa]">
             Get in touch for your next project or consultation.
           </p>
         </div>
@@ -23,7 +23,7 @@ export default function CTA() {
             href="https://wa.me/94782500075"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-[3px] bg-[#25D366] px-5 py-3 text-sm font-medium text-[#0b0c10] transition hover:brightness-95"
+            className="inline-flex items-center gap-2 rounded-[3px] bg-[#25D366] px-5 py-3 text-sm font-medium text-[#090a0c] transition hover:brightness-95"
           >
             <WhatsappIcon className="h-4 w-4" />
             WhatsApp

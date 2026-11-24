@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/solutions", "destination": "/digital", "permanent": true },
+    { "source": "/research-support", "destination": "/research", "permanent": true }
+  ]
+}
