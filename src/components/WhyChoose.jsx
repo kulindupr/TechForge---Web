@@ -1,76 +1,64 @@
-import { Rocket, ShieldCheck, Users, Lock, Zap, Headphones } from 'lucide-react'
+import Reveal from './Reveal'
 
 const items = [
   {
-    icon: Rocket,
-    label: 'Innovative Solutions',
-    desc: 'We bring modern tools and fresh thinking to every project, not off-the-shelf templates.',
+    label: 'Innovative solutions',
+    desc: 'Modern tools and fresh thinking on every project, not off-the-shelf templates.',
   },
   {
-    icon: ShieldCheck,
-    label: 'Quality & Reliability',
+    label: 'Quality & reliability',
     desc: 'Tested, well-engineered software you can depend on, every time.',
   },
   {
-    icon: Users,
-    label: 'Customer Focused',
+    label: 'Customer focused',
     desc: 'We listen first, then build around what your business actually needs.',
   },
   {
-    icon: Lock,
     label: 'Confidentiality',
     desc: 'Your data and ideas stay protected, always.',
   },
   {
-    icon: Zap,
-    label: 'Affordable Services',
-    desc: 'Honest, transparent pricing with no hidden costs.',
+    label: 'Transparent pricing',
+    desc: 'Honest quotes with no hidden costs, agreed before work begins.',
   },
   {
-    icon: Headphones,
-    label: 'Ongoing Support',
+    label: 'Ongoing support',
     desc: 'We stay with you after launch, not just until delivery.',
   },
 ]
 
 const stats = [
-  { value: '2', label: 'Years Experience' },
-  { value: '5', label: 'Projects Delivered' },
-  { value: '2', label: 'Business Divisions' },
-  { value: '100%', label: 'Client Focused' },
+  { value: '2', label: 'Years experience' },
+  { value: '5', label: 'Projects delivered' },
+  { value: '3', label: 'Divisions' },
+  { value: '100%', label: 'Client focused' },
 ]
 
 export default function WhyChoose() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-20">
-      <div className="mb-10 text-center">
-        <h2 className="text-3xl font-bold text-white md:text-4xl">Why Choose Tech Forge?</h2>
-        <p className="mt-2 text-slate-400">Your trusted partner in technology and innovation.</p>
-      </div>
+      <Reveal className="max-w-2xl">
+        <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">Why work with Aelin</h2>
+        <p className="mt-2 text-base text-[#9497a1]">Your trusted partner in technology and innovation.</p>
+      </Reveal>
 
-      <div className="mb-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="mt-10 grid grid-cols-2 gap-px border-y border-[#24252b] bg-[#24252b] sm:grid-cols-4">
         {stats.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-5 text-center"
-          >
-            <p className="text-2xl font-extrabold text-cyan-400 md:text-3xl">{s.value}</p>
-            <p className="mt-1 text-xs font-semibold text-slate-400">{s.label}</p>
+          <div key={s.label} className="bg-[#0b0c10] px-6 py-6">
+            <p className="font-brand text-3xl text-[#efece4]">{s.value}</p>
+            <p className="mt-1 text-sm text-[#9497a1]">{s.label}</p>
           </div>
         ))}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map(({ icon: Icon, label, desc }) => (
-          <div
-            key={label}
-            className="flex flex-col items-start gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-7 transition hover:border-cyan-400/30"
-          >
-            <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-400/10 text-cyan-400">
-              <Icon className="h-6 w-6" />
-            </span>
-            <span className="text-base font-semibold text-slate-100">{label}</span>
-            <p className="text-sm leading-relaxed text-slate-400">{desc}</p>
+      <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        {items.map(({ label, desc }) => (
+          <div key={label} className="flex gap-4">
+            <span className="mt-2 h-px w-5 flex-shrink-0 bg-[#b9922f]" />
+            <div>
+              <p className="text-base font-medium text-[#efece4]">{label}</p>
+              <p className="mt-1 text-sm leading-relaxed text-[#9497a1]">{desc}</p>
+            </div>
           </div>
         ))}
       </div>

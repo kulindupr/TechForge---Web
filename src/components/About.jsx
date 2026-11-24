@@ -1,5 +1,5 @@
-import { Target, Eye, Sparkles, ArrowRight } from 'lucide-react'
 import founderPhoto from '../assets/founder.webp'
+import Reveal from './Reveal'
 
 const LinkedinIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -7,83 +7,73 @@ const LinkedinIcon = (props) => (
   </svg>
 )
 
+const PILLARS = [
+  {
+    title: 'Vision',
+    body: 'To be a trusted technology partner, empowering businesses, students and researchers to achieve more through innovation.',
+  },
+  {
+    title: 'Mission',
+    body: 'Deliver reliable, well-engineered software and research support, tailored to every client’s real-world needs.',
+  },
+  {
+    title: 'Values',
+    body: 'Precision, intelligence, progress, integrity and craft guide every project we take on.',
+  },
+]
+
 export default function About() {
   return (
     <section id="about" className="mx-auto max-w-7xl px-6 py-20">
-      <div className="mb-14 text-center">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400">
-          — About Tech Forge —
-        </span>
-        <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-          Forging the Future, One Idea at a Time
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-slate-400">
-          Founded in 2025, Tech Forge is a technology and professional services company
-          delivering software solutions, academic and research support, and digital
-          transformation services across two dedicated divisions.
-        </p>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-3">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 text-[#06101f]">
-            <Eye className="h-6 w-6" />
-          </span>
-          <h3 className="mt-5 text-lg font-bold text-white">Our Vision</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            To be a trusted technology partner empowering businesses, students and
-            researchers to achieve more through innovation.
+      <Reveal className="grid gap-10 md:grid-cols-[1fr_1.3fr]">
+        <div>
+          <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">
+            Precise thinking,
+            <br />
+            purposeful progress
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-[#9497a1]">
+            Founded in 2025, Aelin Technologies is a Sri Lankan technology, research and
+            innovation company bringing together Aelin Research, Aelin Digital and Aelin
+            Innovation to turn complex needs into clear, practical outcomes.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-fuchsia-500 text-[#06101f]">
-            <Target className="h-6 w-6" />
-          </span>
-          <h3 className="mt-5 text-lg font-bold text-white">Our Mission</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            Deliver reliable, affordable and well-engineered software and research
-            support, tailored to every client's real-world needs.
-          </p>
+        <div className="divide-y divide-[#24252b] border-t border-[#24252b] md:border-t-0">
+          {PILLARS.map((p) => (
+            <div key={p.title} className="grid gap-2 py-5 first:pt-0 sm:grid-cols-[140px_1fr]">
+              <h3 className="font-brand text-lg text-[#efece4]">{p.title}</h3>
+              <p className="text-sm leading-relaxed text-[#9497a1]">{p.body}</p>
+            </div>
+          ))}
         </div>
+      </Reveal>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-[#06101f]">
-            <Sparkles className="h-6 w-6" />
-          </span>
-          <h3 className="mt-5 text-lg font-bold text-white">Our Values</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-300">
-            Quality, confidentiality and customer-focused service guide every project
-            we take on.
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-14 flex flex-col items-center gap-6 rounded-2xl border border-cyan-400/20 bg-white/[0.03] p-8 md:flex-row md:items-center">
+      <div className="mt-14 flex flex-col items-center gap-6 border-t border-[#24252b] pt-10 md:flex-row md:items-center">
         <img
           src={founderPhoto}
           alt="Kulindu Pabasara"
           loading="lazy"
           decoding="async"
-          width="96"
-          height="96"
-          className="h-24 w-24 flex-shrink-0 rounded-full border-2 border-cyan-400/40 object-cover"
+          width="80"
+          height="80"
+          className="h-20 w-20 flex-shrink-0 rounded-full object-cover grayscale"
         />
         <div className="flex-1 text-center md:text-left">
           <div className="flex items-center justify-center gap-2 md:justify-start">
-            <h3 className="text-lg font-bold text-white">Kulindu Pabasara</h3>
+            <h3 className="text-base font-semibold text-[#efece4]">Kulindu Pabasara</h3>
             <a
               href="https://linkedin.com/in/kulindupabasara"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Kulindu Pabasara on LinkedIn"
-              className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-cyan-400/20 hover:text-cyan-300"
+              className="flex h-6 w-6 items-center justify-center text-[#9497a1] transition hover:text-[#b9922f]"
             >
               <LinkedinIcon className="h-3.5 w-3.5" />
             </a>
           </div>
-          <p className="text-sm font-semibold text-cyan-300">Founder — Full-Stack Software Engineer</p>
-          <p className="mt-2 text-sm leading-relaxed text-slate-300">
+          <p className="text-sm font-medium text-[#b9922f]">Founder — Full-Stack Software Engineer</p>
+          <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#9497a1]">
             Kulindu helps businesses solve real-world problems by building scalable
             software, from enterprise applications to AI-powered digital products.
           </p>
@@ -93,10 +83,9 @@ export default function About() {
             href="https://kulindu24-portfolio.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-btn glow-cyan inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-5 py-2.5 text-sm font-semibold text-[#06101f] transition hover:brightness-110"
+            className="btn-outline inline-block px-5 py-2.5 text-center text-sm font-medium"
           >
-            View Portfolio
-            <ArrowRight className="h-4 w-4" />
+            View portfolio
           </a>
         </div>
       </div>

@@ -1,5 +1,4 @@
-import { Send, ArrowRight, Phone } from 'lucide-react'
-import cityscape from '../assets/cta-cityscape.webp'
+import { Phone } from 'lucide-react'
 
 const WhatsappIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -10,52 +9,31 @@ const WhatsappIcon = (props) => (
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative overflow-hidden">
-      <img
-        src={cityscape}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/40 via-purple-600/40 to-fuchsia-600/40" />
-      <div className="absolute inset-0 bg-[#04080f]/50" />
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-16 text-center md:flex-row md:justify-between md:text-left">
-        <div className="flex items-center gap-4">
-          <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-white/10">
-            <Send className="h-5 w-5 text-white" />
-          </span>
-          <div>
-            <h2 className="text-xl font-bold text-white">Let's Build Something Great Together</h2>
-            <p className="mt-1 text-sm text-slate-200">
-              Get in touch with us for your next project or consultation.
-            </p>
-          </div>
+    <section id="contact" className="mx-auto max-w-7xl px-6 pb-20">
+      <div className="flex flex-col gap-8 border-t border-[#24252b] pt-12 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">Let's build something great together</h2>
+          <p className="mt-2 text-base text-[#9497a1]">
+            Get in touch for your next project or consultation.
+          </p>
         </div>
 
-        <div className="flex flex-shrink-0 flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-shrink-0 flex-wrap items-center gap-3">
           <a
             href="https://wa.me/94782500075"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-btn glow-cyan inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-semibold text-[#06101f] transition hover:brightness-95"
+            className="inline-flex items-center gap-2 rounded-[3px] bg-[#25D366] px-5 py-3 text-sm font-medium text-[#0b0c10] transition hover:brightness-95"
           >
             <WhatsappIcon className="h-4 w-4" />
             WhatsApp
           </a>
-          <a
-            href="tel:+94782500075"
-            className="glass-btn glow-white inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
+          <a href="tel:+94782500075" className="btn-outline inline-flex items-center gap-2 px-5 py-3 text-sm font-medium">
             <Phone className="h-4 w-4" />
-            Call Us
+            Call us
           </a>
-          <a
-            href="mailto:techforgesrilanka@gmail.com"
-            className="glass-btn glow-white inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#06101f] transition hover:brightness-95"
-          >
-            Email Us
-            <ArrowRight className="h-4 w-4" />
+          <a href="mailto:techforgesrilanka@gmail.com" className="btn-gold inline-block px-5 py-3 text-sm font-medium">
+            Email us
           </a>
         </div>
       </div>

@@ -1,76 +1,67 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist/wght.css";
+@import "@fontsource-variable/fraunces/standard.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading-brand: "Fraunces Variable", Georgia, serif;
+
+  /* AELIN — editorial ink/gold palette */
+  --color-aelin-obsidian: #0b0c10;
+  --color-aelin-near-black: #000000;
+  --color-aelin-graphite: #131419;
+  --color-aelin-ivory: #efece4;
+  --color-aelin-platinum: #c7c9cd;
+  --color-aelin-champagne: #b9922f;
+  --color-aelin-gold-light: #d4af5a;
+  --color-aelin-gold-deep: #8f6c1f;
+  --color-aelin-slate: #9497a1;
+  --color-aelin-mist: #e5e6e4;
+  --color-aelin-border: #24252b;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 69px;
+  scroll-padding-top: 72px;
 }
 
-/* Glowing glass buttons */
-.glass-btn {
-  position: relative;
-  isolation: isolate;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.font-brand {
+  font-family: var(--font-heading-brand);
+  font-optical-sizing: auto;
 }
-.glass-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 55%);
-  mix-blend-mode: overlay;
-  pointer-events: none;
+
+/* Primary action: flat, small radius — a firm's letterhead button, not a SaaS pill */
+.btn-gold {
+  background: #b9922f;
+  color: #0b0c10;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
 }
-.glow-cyan {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-    0 0 18px 2px rgba(56, 189, 248, 0.55),
-    0 0 48px 10px rgba(56, 189, 248, 0.3);
+.btn-gold:hover {
+  background: #d4af5a;
 }
-.glow-purple {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-    0 0 18px 2px rgba(192, 93, 247, 0.55),
-    0 0 48px 10px rgba(192, 93, 247, 0.3);
+
+/* Secondary action: quiet outline */
+.btn-outline {
+  border: 1px solid #3a3b42;
+  color: #efece4;
+  border-radius: 3px;
+  transition: border-color 0.2s ease;
 }
-@keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-.animate-float {
-  animation: float-y 5s ease-in-out infinite;
-}
-@keyframes marquee-x {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.animate-marquee {
-  animation: marquee-x 28s linear infinite;
-}
-.glow-white {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.4) inset,
-    0 0 18px 2px rgba(255, 255, 255, 0.4),
-    0 0 40px 8px rgba(255, 255, 255, 0.2);
+.btn-outline:hover {
+  border-color: #9497a1;
 }
 
 body {
-  background-color: #060c1a;
-  color: #e5edf7;
+  background-color: #0b0c10;
+  color: #efece4;
 }
 
 @theme inline {
   --font-heading: var(--font-sans);
-  --font-sans: 'Geist Variable', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

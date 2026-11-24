@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Quote, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Reveal from './Reveal'
 import nethminiPhoto from '../assets/testimonial-nethmini.webp'
 import milanPhoto from '../assets/testimonial-milan.webp'
 
@@ -13,7 +14,7 @@ const testimonials = [
   },
   {
     quote:
-      "I was worried a new system would slow my staff down, but it was the opposite — billing is faster now and I can finally see what's selling without counting stock by hand every night. Tech Forge made it simple for people like us who aren't 'tech people'.",
+      "I was worried a new system would slow my staff down, but it was the opposite — billing is faster now and I can finally see what's selling without counting stock by hand every night. Aelin Technologies made it simple for people like us who aren't 'tech people'.",
     name: 'Milan Sathsara',
     role: 'Owner, Milan POS (Food City)',
     photo: milanPhoto,
@@ -34,65 +35,46 @@ export default function Testimonials() {
   const next = () => setI((v) => (v + 1) % testimonials.length)
 
   return (
-    <section className="mx-auto max-w-5xl px-6 pb-20">
-      <div className="mb-10 text-center">
-        <h2 className="text-3xl font-bold text-white md:text-4xl">What Our Clients Say</h2>
-        <p className="mt-2 text-slate-400">Trusted by students, professionals and businesses.</p>
-      </div>
+    <section className="mx-auto max-w-4xl px-6 pb-20">
+      <Reveal>
+        <h2 className="font-brand text-3xl text-[#efece4] md:text-4xl">What clients say</h2>
+      </Reveal>
 
-      <div className="flex items-center gap-4">
-        <button
-          onClick={prev}
-          className="hidden h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/15 text-slate-300 transition hover:border-cyan-400/40 sm:flex"
-          aria-label="Previous testimonial"
-        >
-          <ChevronLeft className="h-4 w-4" />
-        </button>
-
-        <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-          <Quote className="h-7 w-7 text-cyan-400/60" />
-          <p className="mt-4 text-lg leading-relaxed text-slate-200">{t.quote}</p>
-          <div className="mt-6 flex items-center gap-3">
-            {t.photo ? (
-              <img
-                src={t.photo}
-                alt={t.name}
-                loading="lazy"
-                decoding="async"
-                width="44"
-                height="44"
-                className="h-11 w-11 rounded-full object-cover"
-              />
-            ) : (
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-[#06101f]">
-                <Newspaper className="h-5 w-5" />
-              </span>
-            )}
-            <div>
-              <p className="text-sm font-semibold text-white">{t.name}</p>
-              <p className="text-xs text-slate-400">{t.role}</p>
-            </div>
+      <div className="mt-10 border-l-2 border-[#b9922f] pl-8">
+        <p className="font-brand text-2xl leading-snug text-[#efece4] md:text-[1.7rem]">
+          “{t.quote}”
+        </p>
+        <div className="mt-6 flex items-center gap-3">
+          {t.photo ? (
+            <img
+              src={t.photo}
+              alt={t.name}
+              loading="lazy"
+              decoding="async"
+              width="40"
+              height="40"
+              className="h-10 w-10 rounded-full object-cover grayscale"
+            />
+          ) : (
+            <span className="h-10 w-10 rounded-full bg-[#131419]" />
+          )}
+          <div>
+            <p className="text-sm font-semibold text-[#efece4]">{t.name}</p>
+            <p className="text-xs text-[#6b6e76]">{t.role}</p>
           </div>
         </div>
-
-        <button
-          onClick={next}
-          className="hidden h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white/15 text-slate-300 transition hover:border-cyan-400/40 sm:flex"
-          aria-label="Next testimonial"
-        >
-          <ChevronRight className="h-4 w-4" />
-        </button>
       </div>
 
-      <div className="mt-6 flex justify-center gap-2">
-        {testimonials.map((_, idx) => (
-          <span
-            key={idx}
-            className={`h-1.5 rounded-full transition-all ${
-              idx === i ? 'w-6 bg-cyan-400' : 'w-1.5 bg-white/20'
-            }`}
-          />
-        ))}
+      <div className="mt-8 flex items-center gap-4">
+        <button onClick={prev} aria-label="Previous testimonial" className="text-[#9497a1] transition hover:text-[#efece4]">
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button onClick={next} aria-label="Next testimonial" className="text-[#9497a1] transition hover:text-[#efece4]">
+          <ChevronRight className="h-5 w-5" />
+        </button>
+        <span className="text-xs text-[#6b6e76]">
+          {i + 1} / {testimonials.length}
+        </span>
       </div>
     </section>
   )

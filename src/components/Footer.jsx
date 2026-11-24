@@ -22,11 +22,16 @@ const YoutubeIcon = (props) => (
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#04080f]">
+    <footer className="border-t border-[#24252b] bg-[#0b0c10]">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-6 py-6 md:flex-row md:justify-between">
-        <img src={logo} alt="Tech Forge" className="h-24 w-auto" />
+        <div className="flex flex-col items-center gap-1 md:items-start">
+          <img src={logo} alt="Aelin Technologies" className="h-10 w-auto" />
+          <p className="pl-2 text-xs uppercase tracking-[0.2em] text-[#9497a1]">
+            Precision in Progress
+          </p>
+        </div>
 
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-[#9497a1]">
           Technology • Research • Innovation • Digital Solutions
         </p>
 
@@ -45,7 +50,7 @@ export default function Footer() {
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-slate-300 transition hover:bg-cyan-400/20 hover:text-cyan-300"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#131419] text-[#c7c9cd] transition hover:text-[#b9922f]"
             >
               <Icon className="h-4 w-4" />
             </a>
@@ -53,14 +58,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/5 px-6 py-3">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs text-slate-500 md:flex-row">
-          <p>© {new Date().getFullYear()} Tech Forge. All rights reserved.</p>
+      <div className="border-t border-[#24252b] px-6 py-3">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs text-[#9497a1] md:flex-row">
+          <p>© {new Date().getFullYear()} Aelin Technologies. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#privacy" className="hover:text-slate-300">
+            <a href="#privacy" className="hover:text-[#c7c9cd]">
               Privacy Policy
             </a>
-            <a href="#terms" className="hover:text-slate-300">
+            <a href="#terms" className="hover:text-[#c7c9cd]">
               Terms of Service
             </a>
           </div>

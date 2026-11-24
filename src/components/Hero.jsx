@@ -1,86 +1,113 @@
-import { ArrowRight } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
-const SOLUTIONS = [
-  'E-Commerce',
-  'Static Websites',
-  'WordPress',
-  'Portfolios',
-  'ERP Systems',
-  'POS Systems',
-  'Mobile Apps',
-  'Web Applications',
-  'Custom Software',
-  'CMS Platforms',
-  'Business Automation',
-  'Cloud Solutions',
-]
+const CAPABILITIES = ['Research & Analysis', 'Software & Systems', 'AI & Emerging Tech']
+
+function PrecisionMark() {
+  const wrapRef = useRef(null)
+  const markRef = useRef(null)
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+    const wrap = wrapRef.current
+    const mark = markRef.current
+    if (!wrap || !mark) return
+
+    function onMove(e) {
+      const rect = wrap.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width - 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5
+      mark.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`
+    }
+    function onLeave() {
+      mark.style.transform = 'rotateY(0deg) rotateX(0deg)'
+    }
+    wrap.addEventListener('mousemove', onMove)
+    wrap.addEventListener('mouseleave', onLeave)
+    return () => {
+      wrap.removeEventListener('mousemove', onMove)
+      wrap.removeEventListener('mouseleave', onLeave)
+    }
+  }, [])
+
+  return (
+    <div ref={wrapRef} className="relative" style={{ perspective: '900px' }}>
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(185,146,47,0.16), transparent 70%)' }}
+      />
+      <div
+        ref={markRef}
+        className="relative transition-transform duration-200 ease-out"
+        style={{ transformStyle: 'preserve-3d' }}
+      >
+        <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="#24252b" />
+          {Array.from({ length: 7 }).map((_, i) => (
+            <line key={`v${i}`} x1={(i + 1) * 50} y1="0" x2={(i + 1) * 50} y2="400" stroke="#17181c" strokeWidth="1" />
+          ))}
+          {Array.from({ length: 7 }).map((_, i) => (
+            <line key={`h${i}`} x1="0" y1={(i + 1) * 50} x2="400" y2={(i + 1) * 50} stroke="#17181c" strokeWidth="1" />
+          ))}
+          <circle cx="200" cy="200" r="90" fill="none" stroke="#b9922f" strokeWidth="1" />
+          <circle cx="200" cy="200" r="130" fill="none" stroke="#b9922f" strokeWidth="0.5" opacity="0.35" />
+          <circle cx="200" cy="200" r="2.5" fill="#b9922f" />
+          <line x1="200" y1="60" x2="200" y2="105" stroke="#b9922f" strokeWidth="1" />
+          <line x1="200" y1="295" x2="200" y2="340" stroke="#b9922f" strokeWidth="1" />
+          <line x1="60" y1="200" x2="105" y2="200" stroke="#b9922f" strokeWidth="1" />
+          <line x1="295" y1="200" x2="340" y2="200" stroke="#b9922f" strokeWidth="1" />
+          <path d="M160 215 L185 240 L245 170" fill="none" stroke="#efece4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="24" y="30" fill="#9497a1" fontSize="11" fontFamily="monospace" letterSpacing="1">N 06.9271</text>
+          <text x="24" y="382" fill="#9497a1" fontSize="11" fontFamily="monospace" letterSpacing="1">E 79.8612</text>
+        </svg>
+      </div>
+    </div>
+  )
+}
 
 export default function Hero() {
   return (
-    <section id="home" className="relative h-[calc(100vh-69px)] overflow-hidden">
-      <video
-        className="absolute inset-0 h-full w-full object-cover brightness-125 contrast-105"
-        src="/video/hero.mp4"
-        poster="/video/hero-poster.jpg"
-        preload="auto"
-        autoPlay
-        muted
-        loop
-        playsInline
+    <section id="home" className="relative overflow-hidden border-b border-[#17181c] pb-16 pt-36 md:pt-44">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[560px]"
+        style={{
+          background:
+            'radial-gradient(ellipse 900px 500px at 20% 0%, rgba(185,146,47,0.10), transparent 60%)',
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#060c1a] via-[#060c1a]/50 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#060c1a]/80 via-transparent to-transparent" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 pb-16 pt-8">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <div className="max-w-xl">
-          <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-cyan-300">
-            Innovative Technology. Real-World Impact.
-          </span>
-
-          <h1 className="mt-6 text-5xl font-extrabold leading-tight tracking-tight text-white md:text-6xl">
-            Your Ideas.
-            <br />
-            Our Support.
-            <br />
-            <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-              Better Results!
-            </span>
+          <h1 className="font-brand text-6xl leading-[1.02] text-[#efece4] md:text-7xl">
+            Precision in progress
           </h1>
 
-          <p className="mt-6 max-w-md text-base leading-relaxed text-slate-300">
-            Tech Forge is a technology and professional services company delivering
-            software solutions, research support and digital transformation services.
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-[#9497a1]">
+            A Sri Lankan technology, research and innovation practice — built on careful
+            thinking, precise execution and work that holds up.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-5">
-            <a
-              href="#services"
-              className="glass-btn glow-cyan inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-semibold text-[#06101f] transition hover:brightness-110"
-            >
-              Explore Our Services
-              <ArrowRight className="h-4 w-4" />
+          <div className="mt-9 flex flex-wrap items-center gap-8">
+            <a href="#services" className="btn-gold inline-block px-7 py-3.5 text-sm font-medium">
+              Explore our work
             </a>
-            {/* Watch Our Story: no video content yet, button disabled for now */}
-            {/* <button className="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 transition hover:text-cyan-300">
-              <span className="glass-btn glow-white flex h-9 w-9 items-center justify-center rounded-full border border-white/20">
-                <Play className="h-3.5 w-3.5 fill-current" />
-              </span>
-              Watch Our Story
-            </button> */}
+            <a
+              href="#about"
+              className="border-b border-[#3a3b42] pb-0.5 text-sm font-medium text-[#efece4] transition hover:border-[#b9922f] hover:text-[#b9922f]"
+            >
+              About Aelin
+            </a>
           </div>
-        </div>
-      </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 border-t border-white/10 bg-[#060c1a]/60 py-4 backdrop-blur-sm">
-        <div className="flex overflow-hidden">
-          <div className="flex shrink-0 animate-marquee gap-10 whitespace-nowrap pr-10">
-            {[...SOLUTIONS, ...SOLUTIONS].map((item, i) => (
-              <span key={i} className="flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-200">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                {item}
-              </span>
+          <div className="mt-16 flex flex-wrap gap-x-8 gap-y-2 border-t border-[#17181c] pt-6 text-sm text-[#6b6e76]">
+            {CAPABILITIES.map((c) => (
+              <span key={c}>{c}</span>
             ))}
           </div>
+        </div>
+
+        <div className="mx-auto aspect-square w-full max-w-md">
+          <PrecisionMark />
         </div>
       </div>
     </section>
