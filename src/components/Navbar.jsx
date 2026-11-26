@@ -4,8 +4,8 @@ import { ChevronDown, Menu, X } from 'lucide-react'
 import logo from '../assets/logo-navbar.webp'
 
 const SERVICES = [
-  { label: 'Aelin Research', to: '/research', desc: 'Research, statistics & data intelligence' },
   { label: 'Aelin Digital', to: '/digital', desc: 'Software, websites & business systems' },
+  { label: 'Aelin Research', to: '/research', desc: 'Research, statistics & data intelligence' },
   { label: 'Aelin Innovation', to: '/innovation', desc: 'AI, SaaS & emerging technology' },
 ]
 
@@ -20,10 +20,11 @@ const LINKS = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const servicesRef = useRef(null)
   const location = useLocation()
-  const isHome = location.pathname === '/'
+  const isServicesActive = SERVICES.some((s) => s.to === location.pathname)
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -44,7 +45,9 @@ export default function Navbar() {
       if (servicesRef.current && !servicesRef.current.contains(e.target)) setServicesOpen(false)
     }
     function onKey(e) {
-      if (e.key === 'Escape') setServicesOpen(false)
+      if (e.key !== 'Escape') return
+      if (servicesOpen) setServicesOpen(false)
+      else if (open) setOpen(false)
     }
     document.addEventListener('mousedown', onClick)
     document.addEventListener('keydown', onKey)
@@ -52,39 +55,43 @@ export default function Navbar() {
       document.removeEventListener('mousedown', onClick)
       document.removeEventListener('keydown', onKey)
     }
-  }, [])
+  }, [servicesOpen, open])
 
   useEffect(() => {
     setOpen(false)
     setServicesOpen(false)
+    setMobileServicesOpen(false)
   }, [location.pathname])
+
+  const navLinkClass = (to) => {
+    const active = location.pathname === to
+    return active
+      ? 'relative flex items-center gap-1 pb-1 text-[#FFC300] after:absolute after:-bottom-[1px] after:left-0 after:h-px after:w-full after:bg-[#FFC300]'
+      : 'flex items-center gap-1 pb-1 transition-colors duration-200 hover:text-[#f1efe9]'
+  }
 
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
         scrolled
-          ? 'border-b border-white/10 bg-[#090a0c]/80 backdrop-blur-xl'
-          : 'border-b border-transparent bg-[#090a0c]'
+          ? 'border-b border-white/10 bg-[#090a0c]/70 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5">
-        <Link to="/" className="flex items-center gap-2.5">
-          <img src={logo} alt="" className="h-6 w-auto" />
-          <span className="font-brand text-base font-semibold tracking-tight text-[#f1efe9]">
+      <nav
+        aria-label="Main navigation"
+        className="mx-auto grid h-20 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-6"
+      >
+        <Link to="/" className="flex items-center gap-2.5" aria-label="Aelin Technologies — home">
+          <img src={logo} alt="" className="h-6 w-auto shrink-0" />
+          <span className="font-brand text-base font-semibold leading-none tracking-tight text-[#f1efe9]">
             Aelin <span className="font-normal text-[#a3a5aa]">Technologies</span>
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-6 text-sm font-medium text-[#a3a5aa] lg:flex">
+        <ul className="hidden items-center justify-center gap-8 text-sm font-medium text-[#a3a5aa] lg:flex">
           <li>
-            <Link
-              to="/"
-              className={
-                isHome
-                  ? 'relative flex items-center gap-1 pb-1 text-[#c5a46d] after:absolute after:-bottom-[1px] after:left-0 after:h-px after:w-full after:bg-[#c5a46d]'
-                  : 'flex items-center gap-1 pb-1 transition hover:text-[#f1efe9]'
-              }
-            >
+            <Link to="/" aria-current={location.pathname === '/' ? 'page' : undefined} className={navLinkClass('/')}>
               Home
             </Link>
           </li>
@@ -95,10 +102,15 @@ export default function Navbar() {
               onClick={() => setServicesOpen((v) => !v)}
               aria-expanded={servicesOpen}
               aria-haspopup="true"
-              className="flex items-center gap-1 pb-1 transition hover:text-[#f1efe9]"
+              aria-label="Toggle Divisions menu"
+              className={`flex items-center gap-1 pb-1 transition-colors duration-200 hover:text-[#f1efe9] ${
+                isServicesActive ? 'text-[#FFC300]' : ''
+              }`}
             >
-              Services
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+              Divisions
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
+              />
             </button>
 
             {servicesOpen && (
@@ -107,9 +119,16 @@ export default function Navbar() {
                   <Link
                     key={s.to}
                     to={s.to}
-                    className="block rounded-md px-3 py-2.5 transition hover:bg-white/5"
+                    onClick={() => setServicesOpen(false)}
+                    className="block rounded-md px-3 py-2.5 transition-colors duration-200 hover:bg-white/5"
                   >
-                    <span className="block text-sm font-medium text-[#f1efe9]">{s.label}</span>
+                    <span
+                      className={`block text-sm font-medium ${
+                        location.pathname === s.to ? 'text-[#FFC300]' : 'text-[#f1efe9]'
+                      }`}
+                    >
+                      {s.label}
+                    </span>
                     <span className="mt-0.5 block text-xs text-[#777b83]">{s.desc}</span>
                   </Link>
                 ))}
@@ -119,62 +138,107 @@ export default function Navbar() {
 
           {LINKS.slice(1).map((l) => (
             <li key={l.to}>
-              <Link to={l.to} className="flex items-center gap-1 pb-1 transition hover:text-[#f1efe9]">
+              <Link to={l.to} aria-current={location.pathname === l.to ? 'page' : undefined} className={navLinkClass(l.to)}>
                 {l.label}
               </Link>
             </li>
           ))}
         </ul>
 
-        <Link
-          to="/contact"
-          className="btn-outline hidden flex-shrink-0 whitespace-nowrap px-5 py-2 text-sm font-medium lg:inline-block"
-        >
-          Get in touch
-        </Link>
+        <div className="flex items-center justify-end gap-4">
+          <Link
+            to="/contact"
+            className="hidden flex-shrink-0 whitespace-nowrap rounded-full bg-[#FFC300] px-5 py-2.5 text-sm font-medium text-[#090a0c] transition-colors duration-200 hover:bg-[#FFD54D] lg:inline-flex lg:items-center lg:gap-1.5"
+          >
+            Let's Talk
+            <span aria-hidden="true">→</span>
+          </Link>
 
-        <button
-          className="text-[#a3a5aa] lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <button
+            className="text-[#a3a5aa] lg:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
-      {open && (
-        <div className="fixed inset-x-0 bottom-0 top-[57px] overflow-y-auto border-t border-white/10 bg-[#090a0c] px-6 pb-4 lg:hidden">
-          <ul className="flex flex-col gap-3 pt-3 text-sm font-medium text-[#a3a5aa]">
-            {LINKS.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} onClick={() => setOpen(false)}>
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-[#777b83]">Services</p>
-              <ul className="mt-2 flex flex-col gap-2 pl-3">
+      <div
+        className={`fixed inset-x-0 bottom-0 top-20 overflow-y-auto bg-[#090a0c] transition-opacity duration-300 lg:hidden ${
+          open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+      >
+        <div className="flex flex-col gap-1 border-t border-white/10 px-6 py-6 text-lg font-medium text-[#a3a5aa]">
+          <Link
+            to="/"
+            onClick={() => setOpen(false)}
+            aria-current={location.pathname === '/' ? 'page' : undefined}
+            className={`py-3 ${location.pathname === '/' ? 'text-[#FFC300]' : ''}`}
+          >
+            Home
+          </Link>
+
+          <div>
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen((v) => !v)}
+              aria-expanded={mobileServicesOpen}
+              className={`flex w-full items-center justify-between py-3 text-left ${
+                isServicesActive ? 'text-[#FFC300]' : ''
+              }`}
+            >
+              Divisions
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                mobileServicesOpen ? 'max-h-60' : 'max-h-0'
+              }`}
+            >
+              <ul className="flex flex-col gap-1 pb-2 pl-4">
                 {SERVICES.map((s) => (
                   <li key={s.to}>
-                    <Link to={s.to} onClick={() => setOpen(false)} className="transition hover:text-[#f1efe9]">
+                    <Link
+                      to={s.to}
+                      onClick={() => setOpen(false)}
+                      className={`block py-2 text-base ${
+                        location.pathname === s.to ? 'text-[#FFC300]' : 'text-[#a3a5aa]'
+                      }`}
+                    >
                       {s.label}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </li>
-          </ul>
+            </div>
+          </div>
+
+          {LINKS.slice(1).map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              onClick={() => setOpen(false)}
+              aria-current={location.pathname === l.to ? 'page' : undefined}
+              className={`py-3 ${location.pathname === l.to ? 'text-[#FFC300]' : ''}`}
+            >
+              {l.label}
+            </Link>
+          ))}
+
           <Link
             to="/contact"
             onClick={() => setOpen(false)}
-            className="btn-outline mt-4 inline-block px-5 py-2 text-sm font-medium"
+            className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#FFC300] px-6 py-3 text-sm font-medium text-[#090a0c]"
           >
-            Get in touch
+            Let's Talk
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
-      )}
+      </div>
     </header>
   )
 }

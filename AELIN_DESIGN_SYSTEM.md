@@ -11,8 +11,8 @@ Single source of truth for color, type, spacing, components. Implemented as CSS 
 | Ivory | `#F1EFE9` | `--color-aelin-ivory` | Primary text, headings |
 | Secondary text | `#A3A5AA` | `--color-aelin-platinum` | Body copy |
 | Muted text | `#777B83` | `--color-aelin-slate` | Captions, labels, timestamps |
-| Champagne gold | `#C5A46D` | `--color-aelin-champagne` | Accent — links, icons, active states, primary button fill |
-| Gold hover | `#D7B982` | `--color-aelin-gold-hover` | Hover state only |
+| Champagne gold | `#FFC300` | `--color-aelin-champagne` | Accent — links, icons, active states, primary button fill |
+| Gold hover | `#FFD54D` | `--color-aelin-gold-hover` | Hover state only |
 | Subtle border | `rgba(255,255,255,0.10)` | `--color-aelin-border` | Hairlines, dividers |
 | Accent border | `rgba(197,164,109,0.35)` | `--color-aelin-border-accent` | Emphasized hairlines |
 
@@ -50,7 +50,7 @@ Scale (desktop → mobile via Tailwind responsive classes, not `clamp()` — con
 
 ## Components
 
-- `.btn-gold` — flat `#C5A46D` fill, `#090A0C` text, 3px radius, hover → `#D7B982`. Primary action only, one per view.
+- `.btn-gold` — flat `#FFC300` fill, `#090A0C` text, 3px radius, hover → `#FFD54D`. Primary action only, one per view.
 - `.btn-outline` — 1px border, ivory text, hover brightens border — secondary action.
 - Text links — ivory text with a thin underline/border-bottom, hover → gold. Used for "Explore Research" / "Explore Digital" / tertiary CTAs instead of a second button style.
 - Bento tiles (`Capabilities.jsx`) — `#15181D` surface, 1px border, abstract line-art visuals (sparkline/dot-matrix/bars) in gold — no stock imagery, no icon-in-colored-box pattern.

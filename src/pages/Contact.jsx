@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, Phone, Mail } from 'lucide-react'
 import SEO from '../components/SEO'
 import Reveal from '../components/Reveal'
+import heroBg from '../assets/hero-bg.webp'
 
 const WhatsappIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -30,57 +31,84 @@ const CHANNELS = [
     value: 'techforgesrilanka@gmail.com',
     href: 'mailto:techforgesrilanka@gmail.com',
     Icon: Mail,
-    accent: 'bg-[#c5a46d] text-[#090a0c]',
+    accent: 'bg-[#FFC300] text-[#090a0c]',
   },
 ]
 
 export default function Contact() {
   return (
-    <div className="mx-auto max-w-3xl px-6 pb-20 pt-28">
+    <div className="pt-28">
       <SEO
         title="Contact — Aelin Technologies"
         description="Get in touch with Aelin Technologies by WhatsApp, phone or email for your next project or consultation."
         path="/contact"
       />
-      <Link
-        to="/"
-        className="inline-flex items-center gap-2 text-sm font-medium text-[#a3a5aa] transition hover:text-[#c5a46d]"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back to home
-      </Link>
 
-      <Reveal>
-        <h1 className="font-brand mt-8 text-4xl text-[#f1efe9]">Let's build something great together</h1>
-        <p className="mt-3 max-w-xl text-base leading-relaxed text-[#a3a5aa]">
-          Reach out for your next project or consultation via WhatsApp, phone or email.
-        </p>
-      </Reveal>
+      <div className="mx-auto max-w-7xl px-6">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#a3a5aa] transition hover:text-[#FFC300]"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to home
+        </Link>
 
-      <div className="mt-10 divide-y divide-white/10 border-t border-white/10">
-        {CHANNELS.map(({ label, value, href, Icon, accent }) => (
-          <a
-            key={label}
-            href={href}
-            target={href.startsWith('http') ? '_blank' : undefined}
-            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="flex items-center gap-4 py-5 transition hover:opacity-90"
+        <Reveal>
+          <div
+            className="relative mt-8 overflow-hidden rounded-2xl border border-white/10 bg-cover bg-right"
+            style={{ backgroundImage: `url(${heroBg})` }}
           >
-            <span className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-[3px] ${accent}`}>
-              <Icon className="h-5 w-5" />
-            </span>
-            <span>
-              <span className="block text-xs uppercase tracking-[0.15em] text-[#777b83]">{label}</span>
-              <span className="block text-base text-[#f1efe9]">{value}</span>
-            </span>
-          </a>
-        ))}
-      </div>
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(90deg, #090a0c 0%, rgba(9,10,12,0.92) 45%, rgba(9,10,12,0.4) 80%, rgba(9,10,12,0.15) 100%)',
+              }}
+              aria-hidden="true"
+            />
+            <div className="relative px-6 py-14 sm:px-10 sm:py-20">
+              <span className="text-xs font-medium uppercase tracking-[0.25em] text-[#FFC300]">
+                Get In Touch
+              </span>
+              <h1 className="font-brand mt-4 max-w-xl text-3xl leading-tight text-[#f1efe9] md:text-5xl">
+                Let's build something great together
+              </h1>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-[#a3a5aa]">
+                Reach out for your next project or consultation via WhatsApp, phone or
+                email.
+              </p>
+            </div>
+          </div>
+        </Reveal>
 
-      <p className="mt-10 text-sm text-[#777b83]">
-        We're a Sri Lanka-based team working with clients across all three divisions —
-        Aelin Research, Aelin Digital and Aelin Innovation.
-      </p>
+        <div className="mt-14 grid gap-5 sm:grid-cols-3">
+          {CHANNELS.map(({ label, value, href, Icon, accent }, i) => (
+            <Reveal key={label} delay={i * 80}>
+              <a
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="flex h-full flex-col gap-4 rounded-xl border border-white/10 bg-[#15181d] p-6 transition hover:border-[#FFC300]/40"
+              >
+                <span className={`flex h-11 w-11 items-center justify-center rounded-[3px] ${accent}`}>
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.15em] text-[#777b83]">{label}</p>
+                  <p className="mt-1 text-base text-[#f1efe9]">{value}</p>
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={200}>
+          <p className="mt-10 pb-20 text-sm text-[#a3a5aa]">
+            We're a Sri Lanka-based team working with clients across all three divisions —
+            Aelin Research, Aelin Digital and Aelin Innovation.
+          </p>
+        </Reveal>
+      </div>
     </div>
   )
 }

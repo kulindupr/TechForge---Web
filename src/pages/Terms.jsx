@@ -12,16 +12,19 @@ export default function Terms() {
       />
       <Link
         to="/"
-        className="inline-flex items-center gap-2 text-sm font-medium text-[#a3a5aa] transition hover:text-[#c5a46d]"
+        className="inline-flex items-center gap-2 text-sm font-medium text-[#a3a5aa] transition hover:text-[#FFC300]"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to home
       </Link>
 
-      <h1 className="font-brand mt-8 text-4xl text-[#f1efe9]">Terms of Service</h1>
+      <span className="mt-8 block text-xs font-medium uppercase tracking-[0.25em] text-[#FFC300]">
+        Legal
+      </span>
+      <h1 className="font-brand mt-4 text-4xl text-[#f1efe9]">Terms of Service</h1>
       <p className="mt-2 text-sm text-[#777b83]">Last updated: 2026</p>
 
-      <div className="mt-10 space-y-8 text-sm leading-relaxed text-[#a3a5aa]">
+      <div className="mt-10 space-y-8 border-t border-white/10 pt-10 text-sm leading-relaxed text-[#a3a5aa]">
         <section>
           <h2 className="font-brand text-lg text-[#f1efe9]">Scope</h2>
           <p className="mt-2">
@@ -81,7 +84,7 @@ export default function Terms() {
           <h2 className="font-brand text-lg text-[#f1efe9]">Contact</h2>
           <p className="mt-2">
             Questions about these terms can be sent to{' '}
-            <a href="mailto:techforgesrilanka@gmail.com" className="text-[#c5a46d] hover:text-[#d7b982]">
+            <a href="mailto:techforgesrilanka@gmail.com" className="text-[#FFC300] hover:text-[#FFD54D]">
               techforgesrilanka@gmail.com
             </a>
             .

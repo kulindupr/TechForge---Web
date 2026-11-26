@@ -10,8 +10,8 @@
   --color-aelin-surface: #15181d;
   --color-aelin-ivory: #f1efe9;
   --color-aelin-platinum: #a3a5aa;
-  --color-aelin-champagne: #c5a46d;
-  --color-aelin-gold-hover: #d7b982;
+  --color-aelin-champagne: #FFC300;
+  --color-aelin-gold-hover: #FFD54D;
   --color-aelin-slate: #777b83;
   --color-aelin-border: rgba(255, 255, 255, 0.1);
   --color-aelin-border-accent: rgba(197, 164, 109, 0.35);
@@ -29,13 +29,13 @@ html {
 
 /* Primary action: flat, small radius — a firm's letterhead button, not a SaaS pill */
 .btn-gold {
-  background: #c5a46d;
+  background: #FFC300;
   color: #090a0c;
   border-radius: 3px;
   transition: background-color 0.2s ease;
 }
 .btn-gold:hover {
-  background: #d7b982;
+  background: #FFD54D;
 }
 
 /* Secondary action: quiet outline */
@@ -56,6 +56,6 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid #c5a46d;
+  outline: 2px solid #FFC300;
   outline-offset: 2px;
 }

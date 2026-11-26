@@ -1,113 +1,96 @@
-import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import Reveal from './Reveal'
+import heroBg from '../assets/hero-bg.webp'
 
-const CAPABILITIES = ['Research & Analysis', 'Software & Systems', 'AI & Emerging Tech']
-
-function PrecisionMark() {
-  const wrapRef = useRef(null)
-  const markRef = useRef(null)
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
-    const wrap = wrapRef.current
-    const mark = markRef.current
-    if (!wrap || !mark) return
-
-    function onMove(e) {
-      const rect = wrap.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width - 0.5
-      const y = (e.clientY - rect.top) / rect.height - 0.5
-      mark.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`
-    }
-    function onLeave() {
-      mark.style.transform = 'rotateY(0deg) rotateX(0deg)'
-    }
-    wrap.addEventListener('mousemove', onMove)
-    wrap.addEventListener('mouseleave', onLeave)
-    return () => {
-      wrap.removeEventListener('mousemove', onMove)
-      wrap.removeEventListener('mouseleave', onLeave)
-    }
-  }, [])
-
+function ScrollMouseIcon(props) {
   return (
-    <div ref={wrapRef} className="relative" style={{ perspective: '900px' }}>
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(185,146,47,0.16), transparent 70%)' }}
-      />
-      <div
-        ref={markRef}
-        className="relative transition-transform duration-200 ease-out"
-        style={{ transformStyle: 'preserve-3d' }}
-      >
-        <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="399" height="399" fill="none" stroke="rgba(255,255,255,0.1)" />
-          {Array.from({ length: 7 }).map((_, i) => (
-            <line key={`v${i}`} x1={(i + 1) * 50} y1="0" x2={(i + 1) * 50} y2="400" stroke="#15181d" strokeWidth="1" />
-          ))}
-          {Array.from({ length: 7 }).map((_, i) => (
-            <line key={`h${i}`} x1="0" y1={(i + 1) * 50} x2="400" y2={(i + 1) * 50} stroke="#15181d" strokeWidth="1" />
-          ))}
-          <circle cx="200" cy="200" r="90" fill="none" stroke="#c5a46d" strokeWidth="1" />
-          <circle cx="200" cy="200" r="130" fill="none" stroke="#c5a46d" strokeWidth="0.5" opacity="0.35" />
-          <circle cx="200" cy="200" r="2.5" fill="#c5a46d" />
-          <line x1="200" y1="60" x2="200" y2="105" stroke="#c5a46d" strokeWidth="1" />
-          <line x1="200" y1="295" x2="200" y2="340" stroke="#c5a46d" strokeWidth="1" />
-          <line x1="60" y1="200" x2="105" y2="200" stroke="#c5a46d" strokeWidth="1" />
-          <line x1="295" y1="200" x2="340" y2="200" stroke="#c5a46d" strokeWidth="1" />
-          <path d="M160 215 L185 240 L245 170" fill="none" stroke="#f1efe9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <text x="24" y="30" fill="#a3a5aa" fontSize="11" fontFamily="monospace" letterSpacing="1">N 06.9271</text>
-          <text x="24" y="382" fill="#a3a5aa" fontSize="11" fontFamily="monospace" letterSpacing="1">E 79.8612</text>
-        </svg>
-      </div>
-    </div>
+    <svg viewBox="0 0 24 36" fill="none" {...props}>
+      <rect x="1" y="1" width="22" height="34" rx="11" stroke="#FFC300" strokeWidth="1.2" />
+      <circle cx="12" cy="11" r="2" fill="#FFC300" />
+    </svg>
   )
 }
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden border-b border-[#15181d] pb-16 pt-36 md:pt-44">
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[560px]"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 900px 500px at 20% 0%, rgba(185,146,47,0.10), transparent 60%)',
+            'linear-gradient(90deg, rgba(9,10,12,0.96) 0%, rgba(9,10,12,0.82) 42%, rgba(9,10,12,0.35) 75%, rgba(9,10,12,0.15) 100%)',
         }}
       />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
+        style={{ background: 'linear-gradient(0deg, #090a0c, transparent)' }}
+      />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+      <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 pt-20 md:grid-cols-[48%_52%] md:items-center md:gap-10">
         <div className="max-w-xl">
-          <h1 className="font-brand text-6xl leading-[1.02] text-[#f1efe9] md:text-7xl">
-            Precision in progress
-          </h1>
+          <Reveal>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-[#FFC300]" aria-hidden="true" />
+              <span className="text-xs font-medium uppercase tracking-[0.25em] text-[#FFC300]">
+                Aelin Technologies
+              </span>
+            </div>
 
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-[#a3a5aa]">
-            A Sri Lankan technology, research and innovation practice — built on careful
-            thinking, precise execution and work that holds up.
-          </p>
+            <h1 className="font-brand mt-6 text-[clamp(2.75rem,5vw+1rem,5.5rem)] leading-[1.05] text-[#f1efe9]">
+              Digital Craft
+              <br />
+              Meets Intelligent
+              <br />
+              <span className="text-[#FFC300]">Innovation.</span>
+            </h1>
+          </Reveal>
 
-          <div className="mt-9 flex flex-wrap items-center gap-8">
-            <a href="#services" className="btn-gold inline-block px-7 py-3.5 text-sm font-medium">
-              Explore our work
-            </a>
-            <a
-              href="#about"
-              className="border-b border-white/20 pb-0.5 text-sm font-medium text-[#f1efe9] transition hover:border-[#c5a46d] hover:text-[#c5a46d]"
-            >
-              About Aelin
-            </a>
-          </div>
+          <Reveal delay={150}>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-[#a3a5aa]">
+              We design, build and scale intelligent digital solutions that help businesses
+              grow, adapt and lead.
+            </p>
+          </Reveal>
 
-          <div className="mt-16 flex flex-wrap gap-x-8 gap-y-2 border-t border-[#15181d] pt-6 text-sm text-[#777b83]">
-            {CAPABILITIES.map((c) => (
-              <span key={c}>{c}</span>
-            ))}
-          </div>
+          <Reveal delay={300}>
+            <div className="mt-9 flex flex-wrap items-center gap-6">
+              <Link
+                to="/projects"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#FFC300] px-7 py-3.5 text-sm font-medium text-[#090a0c] transition hover:bg-[#FFD54D]"
+              >
+                Explore Our Work
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
+              </Link>
+
+              <Link
+                to="/about"
+                className="group inline-flex items-center gap-2.5 text-sm font-medium text-[#f1efe9] transition hover:text-[#FFC300]"
+              >
+                Discover AELIN
+                <span
+                  aria-hidden="true"
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-white/25 transition group-hover:border-[#FFC300] group-hover:rotate-45"
+                >
+                  ↗
+                </span>
+              </Link>
+            </div>
+          </Reveal>
         </div>
 
-        <div className="mx-auto aspect-square w-full max-w-md">
-          <PrecisionMark />
+        <div aria-hidden="true" className="hidden md:block" />
+      </div>
+
+      <div className="absolute inset-x-0 bottom-6 z-10 hidden justify-center md:flex">
+        <div className="flex flex-col items-center gap-2 text-[#a3a5aa]">
+          <ScrollMouseIcon className="h-6 w-4" />
+          <span className="text-[10px] font-medium uppercase tracking-[0.2em]">Scroll Down</span>
         </div>
       </div>
     </section>

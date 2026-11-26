@@ -2,8 +2,8 @@ import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import Home from './pages/Home'
 
+const Home = lazy(() => import('./pages/Home'))
 const Digital = lazy(() => import('./pages/Digital'))
 const Research = lazy(() => import('./pages/Research'))
 const Innovation = lazy(() => import('./pages/Innovation'))

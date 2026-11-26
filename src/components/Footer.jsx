@@ -1,18 +1,24 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone } from 'lucide-react'
 import logo from '../assets/logo-footer.webp'
+import footerBg from '../assets/footer-bg.webp'
 
 const DIVISION_LINKS = [
-  { label: 'Aelin Research', to: '/research' },
-  { label: 'Aelin Digital', to: '/digital' },
-  { label: 'Aelin Innovation', to: '/innovation' },
+  { label: 'Digital', to: '/digital' },
+  { label: 'Research', to: '/research' },
+  { label: 'Innovation', to: '/innovation' },
 ]
 
-const PAGE_LINKS = [
-  { label: 'Projects', to: '/projects' },
+const COMPANY_LINKS = [
   { label: 'About', to: '/about' },
-  { label: 'Insights', to: '/insights' },
+  { label: 'Projects', to: '/projects' },
   { label: 'Contact', to: '/contact' },
+]
+
+const RESOURCE_LINKS = [
+  { label: 'Insights', to: '/insights' },
+  { label: 'Privacy', to: '/privacy' },
+  { label: 'Terms', to: '/terms' },
 ]
 
 const WhatsappIcon = (props) => (
@@ -22,71 +28,47 @@ const WhatsappIcon = (props) => (
   </svg>
 )
 
-const LinkedinIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
-  </svg>
-)
-
-const YoutubeIcon = (props) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.6 15.6V8.4l6.27 3.6-6.27 3.6z" />
-  </svg>
-)
+function FooterColumn({ title, links }) {
+  return (
+    <div>
+      <p className="text-sm font-semibold text-[#f1efe9]">{title}</p>
+      <ul className="mt-4 flex flex-col gap-2.5 text-sm text-[#a3a5aa]">
+        {links.map((l) => (
+          <li key={l.to}>
+            <Link to={l.to} className="transition hover:text-[#FFC300]">
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#090a0c]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 sm:grid-cols-3">
-        <div>
+    <footer
+      className="relative overflow-hidden border-t border-white/10 bg-cover bg-bottom"
+      style={{ backgroundImage: `url(${footerBg})` }}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[#090a0c]/75" aria-hidden="true" />
+
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-10 px-6 py-12 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex-shrink-0">
           <img src={logo} alt="Aelin Technologies" className="h-10 w-auto" />
-          <p className="pl-2 text-xs uppercase tracking-[0.2em] text-[#a3a5aa]">
+          <p className="pl-4 text-xs uppercase tracking-[0.2em] text-[#a3a5aa]">
             Precision in Progress
           </p>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#777b83]">
-            A Sri Lankan technology, research and innovation practice across three
-            divisions.
-          </p>
         </div>
 
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#777b83]">Divisions</p>
-          <ul className="mt-4 flex flex-col gap-2.5 text-sm text-[#a3a5aa]">
-            {DIVISION_LINKS.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className="transition hover:text-[#c5a46d]">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="grid grid-cols-3 gap-10 sm:flex sm:gap-16">
+          <FooterColumn title="Divisions" links={DIVISION_LINKS} />
+          <FooterColumn title="Company" links={COMPANY_LINKS} />
+          <FooterColumn title="Resources" links={RESOURCE_LINKS} />
         </div>
 
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#777b83]">Company</p>
-          <ul className="mt-4 flex flex-col gap-2.5 text-sm text-[#a3a5aa]">
-            {PAGE_LINKS.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className="transition hover:text-[#c5a46d]">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 border-t border-white/10 px-6 py-6 md:flex-row md:justify-between">
-        <p className="text-sm text-[#a3a5aa]">
-          Technology • Research • Innovation • Digital Solutions
-        </p>
-
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-3 lg:items-start">
           {[
-            // LinkedIn: N/A yet
-            // { Icon: LinkedinIcon, href: '#contact' },
-            // YouTube: N/A yet
-            // { Icon: YoutubeIcon, href: '#contact' },
             { Icon: WhatsappIcon, href: 'https://wa.me/94782500075' },
             { Icon: Phone, href: 'tel:+94782500075' },
             { Icon: Mail, href: 'mailto:techforgesrilanka@gmail.com' },
@@ -96,7 +78,7 @@ export default function Footer() {
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#15181d] text-[#a3a5aa] transition hover:text-[#c5a46d]"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-[#15181d] text-[#a3a5aa] transition hover:text-[#FFC300]"
             >
               <Icon className="h-4 w-4" />
             </a>
@@ -104,18 +86,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-6 py-3">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 text-xs text-[#a3a5aa] md:flex-row">
-          <p>© {new Date().getFullYear()} Aelin Technologies. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Link to="/privacy" className="hover:text-[#c5a46d]">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="hover:text-[#c5a46d]">
-              Terms of Service
-            </Link>
-          </div>
-        </div>
+      <div className="relative border-t border-white/10 px-6 py-5">
+        <p className="mx-auto max-w-7xl text-xs text-[#a3a5aa]">
+          © {new Date().getFullYear()} Aelin Technologies. All rights reserved.
+        </p>
       </div>
     </footer>
   )
